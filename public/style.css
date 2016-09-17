@@ -1,0 +1,64 @@
+md-card {
+  width: 600px;
+  height: 115px;
+  box-sizing: border-box;
+  margin: 16px;
+}
+
+md-card.div {
+	padding-top: 20px
+}
+
+a {
+  color: #00B7FF;
+  text-decoration : none;
+}
+
+md-toolbar {
+  .md-button {
+    border-radius: 39%; // round toolbar buttons
+  }
+}
+
+md-progress-circular {
+	padding-left: 45%;
+} 
+
+h4 {
+	color: teal;
+	height: 13px;
+}
+
+.icon {
+	padding-top: 7px;
+}
+
+.mainContent {
+	height: 550px;
+
+}
+
+.md-button.md-fab{
+	padding-top: 7px
+}
+
+.img {
+	cursor: pointer; 
+	height:115px; 
+	width: 115px
+}	
+
+.newForm {
+	width: 80%;
+	height: 40%;
+}
+
+.card-container {
+  display: flex;
+  flex-flow: row wrap;
+  height: 448px;
+}
+
+.cardContent {
+	padding-left: 10px
+}

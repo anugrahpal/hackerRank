@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>One Push</title>
+
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'> 
+    <link rel="stylesheet" type="text/css" href="stylesheets/angular-material.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+</head>
+
+<body ng-app="onePush" ng-controller="mainController">
+
+	<md-toolbar md-whiteframe="3">
+        <div layout="row">
+          <md-button class="menu" hide-gt-sm ng-click="toggleNav()" aria-label="Show User List">
+            <ng-md-icon icon="menu" style="fill: white"></ng-md-icon>
+          </md-button>
+          <h2>OnePush - finding the best Online Website!</h2>
+          <span flex></span>
+        </div>
+    </md-toolbar>
+
+    <md-button class="md-fab md-fab-bottom-right" aria-label="Add"  data-toggle="modal" data-target=".bs-example-modal-lg">
+        <ng-md-icon icon="add" class="icon" style="fill: white"></ng-md-icon>
+     </md-button>
+
+    <md-content layout="column">
+       <div layout-margin>   
+          <div flex="auto">
+            <md-input-container class="md-block" layout-padding >
+              <label>Search (by title, url or tag)</label>
+              <input type="text" ng-model="searchText">
+            </md-input-container>
+          </div>    
+
+          <md-progress-circular ng-show="loading" md-mode="indeterminate"></md-progress-circular>
+
+          <md-content class="card-container">
+              <md-card md-theme-watch ng-repeat="item in listdata | filter:searchText" layout="row" flex-sm="100" flex-sm-md="50">
+                <img src="{{item.favicon_image}}" class="img">
+                <div class="cardContent">
+                	<h4>{{item.title}}</h4>
+                  <div class="div">
+                    <ng-md-icon icon="loyalty" style="fill: teal" class="icon"></ng-md-icon>{{item.tag}}<span>  |</span> <ng-md-icon icon="thumb_up" style="fill: teal"></ng-md-icon> {{thumbsCount}}
+                    <br>
+                    <ng-md-icon icon="link" style="fill: teal"></ng-md-icon><a href="{{item.url_address}}" target="_blank">{{item.url_address}}</a>
+                  </div>     	
+                </div>
+            </md-card>
+          </md-content>
+       </div>
+    </md-content>
+
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <md-content layout-padding ng-controller="mainController">
+            <form name="addNew" layout="column">
+                <h2>Contribute/ Add Website</h2>
+              <md-input-container>
+                 <label>Title</label>
+                 <input type="text" ng-model="newTitle" required>
+              </md-input-container>
+              <md-input-container>
+                 <label>Web/URL Address</label>
+                 <input type="text" ng-model="newWeb" required>
+              </md-input-container>
+              <md-input-container>
+                 <label>Tag</label>
+                 <input type="text" ng-model="newTag" required>
+              </md-input-container>
+              <md-button class='md-raised md-primary' ng-disabled="addNew.$invalid" ng-click="new()" data-dismiss="modal">Push Website</md-button>
+            </form>
+        </md-content>
+        </div>
+      </div>
+    </div>
+    
+
+	<!----Scripts -->
+    <script src="javascripts/angular.min.js"></script>
+    <script src="javascripts/angular-route.js"></script>
+
+  <!-- Angular material scripts -->
+    <script src="javascripts/angular-animate.min.js"></script>
+    <script src="javascripts/angular-aria.min.js"></script>
+    <script src="javascripts/angular-material.min.js"></script>
+
+  <!-- Bootstrap  --> 
+    <script src="javascripts/jquery.min.js"></script>
+    <script src="javascripts/bootstrap.min.js"></script>
+
+  <!-- Material Icons -->  
+    <script src="javascripts/angular-material-icons.min.js"></script>
+
+  <!-- Custom scrpts --> 
+    <script src="javascripts/mainApp.js"></script>
+
+</body>
+</html>
